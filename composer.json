@@ -24,6 +24,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "league/flysystem-ftp": "^3.0",
+        "league/oauth2-server": "^8.3",
         "maatwebsite/excel": "^3.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^6.1",
@@ -78,23 +79,6 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "ssh-keygen -t rsa -b 4096 -f ./storage/id_rsa && mv ./storage/id_rsa ./storage/oauth-private.key && mv ./storage/id_rsa.pub ./storage/oauth-public.key",
-            "@php artisan clear-compiled",
-            "@php artisan optimize",
-            "@php artisan migrate --force",
-            "@php artisan passport:install --force"
-        ]
+        
     }
 }
