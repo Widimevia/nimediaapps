@@ -203,6 +203,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -235,7 +237,7 @@ return [
         Webkul\Tag\Providers\TagServiceProvider::class,
         Webkul\UI\Providers\UIServiceProvider::class,
         Webkul\User\Providers\UserServiceProvider::class,
-        Webkul\Income\Providers\IncomeServiceProvider::class,
+        // Webkul\Income\Providers\IncomeServiceProvider::class,
         Webkul\Workflow\Providers\WorkflowServiceProvider::class
         
     ],
