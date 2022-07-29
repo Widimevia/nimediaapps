@@ -19,11 +19,11 @@ class AlterLeadPipelineStagesTable extends Migration
             $table->string('name')->after('code')->nullable();
         });
 
-        DB::table('lead_pipeline_stages stages')
-            ->join('lead_stages leadstg', 'lead_stage_id', '=', 'id')
+        DB::table('lead_pipeline_stages')
+            ->join('lead_stages leads', 'lead_pipeline_stages.lead_stage_id', '=', 'leads.id')
             ->update([
-                'code' => DB::raw('lead_stages.code'),
-                'name' => DB::raw('lead_stages.name')
+                'lead_pipeline_stages.code' => DB::raw('leads.code'),
+                'lead_pipeline_stages.name' => DB::raw('leads.name')
             ]);
 
         Schema::table('lead_pipeline_stages', function (Blueprint $table) {
