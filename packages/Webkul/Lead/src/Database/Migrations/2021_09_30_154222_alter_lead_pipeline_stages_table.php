@@ -20,7 +20,7 @@ class AlterLeadPipelineStagesTable extends Migration
         });
 
         DB::table('lead_pipeline_stages')
-            ->join('lead_stages', 'lead_stage_id', '=', 'id')
+            ->join('lead_stages', 'lead_stage_id', '=', 'lead_stages.id')
             ->update([
                 'lead_pipeline_stages.code' => DB::raw('lead_stages.code'),
                 'lead_pipeline_stages.name' => DB::raw('lead_stages.name')
