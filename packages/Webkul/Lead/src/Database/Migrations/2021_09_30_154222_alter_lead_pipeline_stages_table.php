@@ -14,16 +14,16 @@ class AlterLeadPipelineStagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lead_pipeline_stages', function (Blueprint $table) {
+        Schema::table('lead_pipeline_stages', function (Blueprint $table) {
             $table->string('code')->after('id')->nullable();
             $table->string('name')->after('code')->nullable();
         });
 
         DB::table('lead_pipeline_stages')
-            ->join('lead_stages', 'lead_pipeline_stages.lead_stage_id', '=', 'lead_stages.id')
+            ->join('lead_stages', 'lead_stage_id', '=', 'id')
             ->update([
-                'lead_pipeline_stages.code' => DB::raw('lead_stages.code'),
-                'lead_pipeline_stages.name' => DB::raw('lead_stages.name')
+                'code' => DB::raw('code'),
+                'name' => DB::raw('name')
             ]);
 
         Schema::table('lead_pipeline_stages', function (Blueprint $table) {
