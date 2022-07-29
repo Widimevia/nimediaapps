@@ -14,7 +14,7 @@ class AlterLeadPipelineStagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('lead_pipeline_stages', function (Blueprint $table) {
+        Schema::create('lead_pipeline_stages', function (Blueprint $table) {
             $table->string('code')->after('id')->nullable();
             $table->string('name')->after('code')->nullable();
         });
