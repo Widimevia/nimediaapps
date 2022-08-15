@@ -12,6 +12,7 @@ use Webkul\Lead\Repositories\PipelineRepository;
 use Webkul\Lead\Repositories\ProductRepository as LeadProductRepository;
 use Webkul\Product\Repositories\ProductRepository;
 use Webkul\Expenses\Repositories\ExpensesRepository;
+use Webkul\Income\Repositories\IncomeRepository;
 use Webkul\Quote\Repositories\QuoteRepository;
 use Webkul\User\Repositories\UserRepository;
 
@@ -80,6 +81,7 @@ class Dashboard
      */
     protected $userRepository;
     protected $expensesRepository;
+    protected $incomeRepository;
 
     /**
      * Email repository instance.
@@ -112,7 +114,8 @@ class Dashboard
         ActivityRepository $activityRepository,
         UserRepository $userRepository,
         EmailRepository $emailRepository,
-        // ExpensesRepository $expensesRepository
+        ExpensesRepository $expensesRepository,
+        IncomeRepository $incomeRepository
     ) {
         $this->leadRepository = $leadRepository;
 
@@ -131,7 +134,8 @@ class Dashboard
         $this->userRepository = $userRepository;
 
         $this->emailRepository = $emailRepository;
-        // $this->expensesRepository = $expensesRepository;
+        $this->expensesRepository = $expensesRepository;
+        $this->incomeRepository = $incomeRepository;
     }
 
     /**

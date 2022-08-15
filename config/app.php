@@ -237,7 +237,7 @@ return [
         Webkul\Tag\Providers\TagServiceProvider::class,
         Webkul\UI\Providers\UIServiceProvider::class,
         Webkul\User\Providers\UserServiceProvider::class,
-        // Webkul\Income\Providers\IncomeServiceProvider::class,
+        Webkul\Income\Providers\IncomeServiceProvider::class,
         Webkul\Workflow\Providers\WorkflowServiceProvider::class
         
     ],

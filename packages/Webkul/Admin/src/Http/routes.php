@@ -1,6 +1,5 @@
 <?php
 
-use Webkul\Admin\Http\Controllers\Expenses\ExpensesController;
 
 // use Illuminate\Routing\Route;
 

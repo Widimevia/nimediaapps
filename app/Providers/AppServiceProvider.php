@@ -3,10 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Webkul\Expenses\Contracts\Expenses;
-use Webkul\Expenses\Providers\ExpenseServiceProvider;
-use Webkul\Income\Providers\IncomeServiceProvider;
-
 
 class AppServiceProvider extends ServiceProvider
 {

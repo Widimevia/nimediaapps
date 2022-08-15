@@ -62,6 +62,7 @@
             "Webkul\\EmailTemplate\\": "packages/Webkul/EmailTemplate/src",
             "Webkul\\Lead\\": "packages/Webkul/Lead/src",
             "Webkul\\Expenses\\": "packages/Webkul/Expenses/src",
+            "Webkul\\Income\\": "packages/Webkul/Income/src",
             "Webkul\\Product\\": "packages/Webkul/Product/src",
             "Webkul\\Quote\\": "packages/Webkul/Quote/src",
             "Webkul\\Tag\\": "packages/Webkul/Tag/src",

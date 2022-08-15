@@ -13,7 +13,7 @@ class IncomeDataGrid extends DataGrid
 
     public function prepareQueryBuilder()
     {
-        $queryBuilder = DB::table('expenses')->addSelect('*');
+        $queryBuilder = DB::table('income')->addSelect('*');
         $this->addFilter('id', 'id');
         $this->addFilter('price', 'price');
         $this->addFilter('subject', 'subject');

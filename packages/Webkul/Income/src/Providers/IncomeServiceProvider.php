@@ -4,6 +4,9 @@ namespace Webkul\Income\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Webkul\Income\Models\Income;
+use Illuminate\Foundation\AliasLoader;
+use Illuminate\Routing\Router;
 
 class IncomeServiceProvider extends ServiceProvider
 {
@@ -12,9 +15,10 @@ class IncomeServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        DB::unprepared('SET AUTOCOMMIT = 1;');
 
         $this->loadRoutesFrom(__DIR__ . '/../Http/routes.php');
 
