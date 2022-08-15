@@ -14,12 +14,16 @@ class CreateIncomeTable extends Migration
     public function up()
     {
         Schema::create('income', function (Blueprint $table) {
-            $table->id('id')->autoIncrement();
-            $table->string('subject')->unique();
+            $table->id();
+            $table->string('subject');
             $table->string('description')->nullable();
-            $table->decimal('price', 12, 4)->nullable();
+            $table->decimal('price', 12, 4)->default(0)->nullable();
             $table->integer('amount')->nullable();
+            $table->decimal('tax_amount', 12, 4)->nullable();
+            $table->decimal('sub_total', 12, 4)->nullable();
             $table->decimal('grand_total', 12, 4)->nullable();
+            $table->datetime('date_transac')->nullable();
+
             $table->timestamps();
         });
     }
@@ -33,4 +37,4 @@ class CreateIncomeTable extends Migration
     {
         Schema::dropIfExists('income');
     }
-}
+};

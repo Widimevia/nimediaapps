@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(AdminDatabaseSeeder::class);
-        // $this->call(ExpensesDatabaseSeeder::class);
-        // $this->call(CoreDatabaseSeeder::class);
-        // $this->call(UserDatabaseSeeder::class);
-        // $this->call(ContactDatabaseSeeder::class);
-        // $this->call(ProductDatabaseSeeder::class);
+        $this->call(ExpensesDatabaseSeeder::class);
+        $this->call(CoreDatabaseSeeder::class);
+        $this->call(UserDatabaseSeeder::class);
+        $this->call(ContactDatabaseSeeder::class);
+        $this->call(ProductDatabaseSeeder::class);
     }
 }

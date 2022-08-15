@@ -2,14 +2,8 @@
 
 namespace Webkul\Income\Providers;
 
-// use Barryvdh\DomPDF\ServiceProvider;
-
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Routing\Router;
-
-
 
 class IncomeServiceProvider extends ServiceProvider
 {
@@ -22,6 +16,19 @@ class IncomeServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
+        $this->loadRoutesFrom(__DIR__ . '/../Http/routes.php');
+
+        $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'income');
+
+        $this->publishes([
+            __DIR__ . '/../../publishable/assets' => public_path('income/assets'),
+        ], 'public');
+
+        $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'income');
+
+        Event::listen('admin.layout.head', function($viewRenderEventManager) {
+            $viewRenderEventManager->addTemplate('income::layouts.style');
+        });
     }
 
     /**
@@ -31,7 +38,7 @@ class IncomeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // $this->registerConfig();
+        $this->registerConfig();
     }
 
     /**
@@ -41,12 +48,12 @@ class IncomeServiceProvider extends ServiceProvider
      */
     protected function registerConfig()
     {
-        // $this->mergeConfigFrom(
-        //     dirname(__DIR__) . '/Config/menu.php', 'menu.admin'
-        // );
+        $this->mergeConfigFrom(
+            dirname(__DIR__) . '/Config/menu.php', 'menu.admin'
+        );
 
-        // $this->mergeConfigFrom(
-        //     dirname(__DIR__) . '/Config/acl.php', 'acl'
-        // );
+        $this->mergeConfigFrom(
+            dirname(__DIR__) . '/Config/acl.php', 'acl'
+        );
     }
 }
