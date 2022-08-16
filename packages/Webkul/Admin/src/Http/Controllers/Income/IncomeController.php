@@ -76,7 +76,9 @@ class IncomeController extends Controller
      */
     public function edit($id)
     {
+        $income = $this->incomeRepository->findOrFail($id);
 
+        return view('admin::income.edit', compact('income'));
     }
 
     /**
@@ -87,7 +89,23 @@ class IncomeController extends Controller
      */
     public function update($id)
     {
-        
+        Event::dispatch('income.update.before', $id);
+
+        $income = $this->incomeRepository->update(request()->all(), $id);
+
+        Event::dispatch('income.update.after', $income);
+
+        session()->flash('success', trans('admin::app.income.update-success'));
+
+        return redirect()->route('admin.income.index');
+    }
+    public function search()
+    {
+        $results = $this->incomeRepository->findWhere([
+            ['name', 'like', '%' . urldecode(request()->input('query')) . '%']
+        ]);
+
+        return response()->json($results);
     }
 
     /**
@@ -108,11 +126,11 @@ class IncomeController extends Controller
             Event::dispatch('settings.income.delete.after', $id);
 
             return response()->json([
-                'message' => trans('admin::app.response.destroy-success', ['name' => trans('admin::app.income.product')]),
+                'message' => trans('admin::app.response.destroy-success', ['name' => trans('admin::app.income.income')]),
             ], 200);
         } catch(\Exception $exception) {
             return response()->json([
-                'message' => trans('admin::app.response.destroy-failed', ['name' => trans('admin::app.income.product')]),
+                'message' => trans('admin::app.response.destroy-failed', ['name' => trans('admin::app.income.income')]),
             ], 400);
         }
     }

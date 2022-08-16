@@ -46,6 +46,14 @@ class AttributeDataGrid extends DataGrid
                         'name'      => trans('admin::app.quotes.title'),
                         'isActive'  => false,
                         'key'       => 'quotes',
+                    ], [
+                        'name'      => 'Pemasukan',
+                        'isActive'  => false,
+                        'key'       => 'income',
+                    ], [
+                        'name'      => 'Pengeluaran',
+                        'isActive'  => false,
+                        'key'       => 'expenses',
                     ]
                 ]
             ]

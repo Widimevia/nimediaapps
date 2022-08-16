@@ -2,8 +2,8 @@
 
 namespace Webkul\Admin\Datagrids\Income;
 
-use Illuminate\Support\Facades\DB;
 use Webkul\UI\DataGrid\DataGrid;
+use Illuminate\Support\Facades\DB;
 
 class IncomeDataGrid extends DataGrid
 {
@@ -13,7 +13,7 @@ class IncomeDataGrid extends DataGrid
 
     public function prepareQueryBuilder()
     {
-        $queryBuilder = DB::table('income')->addSelect('*');
+        $queryBuilder = DB::table('incomes')->addSelect('*');
         $this->addFilter('id', 'id');
         $this->addFilter('price', 'price');
         $this->addFilter('subject', 'subject');
