@@ -18,7 +18,8 @@ class CreateActivitiesTable extends Migration
             $table->string('title')->nullable();
             $table->string('type');
             $table->text('comment')->nullable();
-            $table->json('additional')->nullable();
+            // $table->json('additional')->nullable();
+            $table->string('additional')->nullable();
             $table->datetime('schedule_from')->nullable();
             $table->datetime('schedule_to')->nullable();
             $table->boolean('is_done')->default(0);
