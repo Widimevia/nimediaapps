@@ -333,7 +333,54 @@ class Dashboard
 
         return $cardData ?? false;
     }
+    
 
+    public function getExpenses($startDateFilter, $endDateFilter, $totalWeeks)
+    {
+        $labels = $expensesCount = [];
+
+        if ($totalWeeks) {
+            for ($index = $totalWeeks; $index >= 1; $index--) {
+                list(
+                    'startDate' => $startDate,
+                    'endDate'   => $endDate,
+                    'labels'    => $labels,
+                ) = $this->getFormattedDateRange([
+                    "start_date"  => $startDateFilter,
+                    "end_date"    => $endDateFilter,
+                    "index"       => $index,
+                    "labels"      => $labels,
+                    "total_weeks" => $totalWeeks,
+                ]);
+
+                // get expenses count
+                array_push($expensesCount, $this->expensesRepository->getExpensesCount($startDate, $endDate));
+            }
+        } else {
+            $labels = [__("admin::app.dashboard.week") . "1"];
+            $expensesCount = [$this->expensesRepository->getExpensesCount($startDateFilter, $endDateFilter)];
+        }
+
+        if (! empty(array_filter($expensesCount))) {
+            $cardData = [
+                "data" => [
+                    "labels"   => $labels,
+                    "datasets" => [
+                        [
+                            "fill"            => true,
+                            "tension"         => 0.6,
+                            "backgroundColor" => "#4BC0C0",
+                            "borderColor"     => '#2f7373',
+                            "data"            => $expensesCount,
+                            "label"           => __("admin::app.dashboard.expenses"),
+                        ],
+                    ]
+                ]
+            ];
+        }
+
+        return $cardData ?? false;
+    }
     /**
      * Collect customers card data.
      *
@@ -490,6 +537,19 @@ class Dashboard
         $cardData = [
             "data" => $topLeads
         ];
+
+        return $cardData;
+    }
+    public function getExpensesValue($startDateFilter, $endDateFilter, $totalWeeks)
+    {
+        $expensesValue = $this->expensesRepository
+            ->select(DB::raw("SUM(grand_total) as grandtotal"),DB::raw("COUNT(grand_total) as count"))
+            ->limit(3)
+            ->get();
+
+        $cardData = [
+            "data" => $expensesValue
+            ];
 
         return $cardData;
     }

@@ -40,7 +40,7 @@
                                 {{ $attribute->name }}
 
                                 @if ($attribute->type == 'price')
-                                    <span class="currency-code">($)</span>
+                                    <span class="currency-code">(Rp)</span>
                                 @endif
 
                             </label>
