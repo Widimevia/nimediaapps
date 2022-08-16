@@ -40,49 +40,24 @@ class ExpensesDataGrid extends DataGrid
         
         ]);
         $this->addColumn([
-            'index'    => 'price',
-            'label'    => trans('admin::app.datagrid.price'),
-            'type'     => 'string',
-            'sortable' => true,
-            'closure'  => function ($row) {
-                return core()->formatBasePrice($row->price, 2);
-            },
-        
-        ]);
-        $this->addColumn([
-            'index'    => 'amount',
-            'label'    => trans('admin::app.datagrid.amount'),
-            'type'     => 'string',
-            'sortable' => true,
-        
-        ]);
-        $this->addColumn([
-            'index'    => 'tax_amount',
-            'label'    => trans('admin::app.datagrid.tax'),
-            'type'     => 'string',
-            'sortable' => true,
-            'closure'  => function ($row) {
-                return core()->formatBasePrice($row->tax_amount, 2);
-            },
-        ]);
-        $this->addColumn([
             'index'    => 'grand_total',
             'label'    => trans('admin::app.datagrid.grand-total'),
             'type'     => 'string',
             'sortable' => true,
             'closure'  => function ($row) {
-                return core()->formatBasePrice($row->grand_total, 2);
+                return '<b style="color:tomato">- '. core()->formatBasePrice($row->grand_total, 2).'</b>';
+
             },
         ]);
-        // $this->addColumn([
-        //     'index'    => 'date_transac',
-        //     'label'    => trans('admin::app.datagrid.date_transac'),
-        //     'type'     => 'string',
-        //     'sortable' => true,
-        //     'closure'  => function ($row) {
-        //         return core()->formatDate($row->date_transac);
-        //     },
-        // ]);
+        $this->addColumn([
+            'index'    => 'date_transac',
+            'label'    => trans('admin::app.datagrid.date_transac'),
+            'type'     => 'string',
+            'sortable' => true,
+            'closure'  => function ($row) {
+                return core()->formatDate($row->date_transac);
+            },
+        ]);
     }
 
     public function prepareActions()

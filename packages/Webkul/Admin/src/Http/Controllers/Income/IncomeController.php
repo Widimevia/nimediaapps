@@ -126,12 +126,26 @@ class IncomeController extends Controller
             Event::dispatch('settings.income.delete.after', $id);
 
             return response()->json([
-                'message' => trans('admin::app.response.destroy-success', ['name' => trans('admin::app.income.income')]),
+                'message' => trans('admin::app.response.destroy-success', ['name' => trans('admin::app.income.title')]),
             ], 200);
         } catch(\Exception $exception) {
             return response()->json([
-                'message' => trans('admin::app.response.destroy-failed', ['name' => trans('admin::app.income.income')]),
+                'message' => trans('admin::app.response.destroy-failed', ['name' => trans('admin::app.income.title')]),
             ], 400);
         }
+    }
+    public function massDestroy()
+    {
+        foreach (request('rows') as $incomeId) {
+            Event::dispatch('income.delete.before', $incomeId);
+
+            $this->incomeRepository->delete($incomeId);
+
+            Event::dispatch('income.delete.after', $incomeId);
+        }
+
+        return response()->json([
+            'message' => trans('admin::app.response.destroy-success', ['name' => trans('admin::app.income.title')]),
+        ]);
     }
 }

@@ -38,29 +38,23 @@ class IncomeDataGrid extends DataGrid
             'sortable' => true,
         ]);
 
-        $this->addColumn([
-            'index'    => 'price',
-            'label'    => trans('admin::app.datagrid.price'),
-            'type'     => 'string',
-            'sortable' => true,
-            'closure'  => function ($row) {
-                return round($row->price, 2);
-            },
-        ]);
-
-        $this->addColumn([
-            'index'    => 'amount',
-            'label'    => trans('admin::app.datagrid.amount'),
-            'type'     => 'string',
-            'sortable' => true,
-        ]);
+        
         $this->addColumn([
             'index'    => 'grand_total',
             'label'    => trans('admin::app.datagrid.grand_total'),
             'type'     => 'string',
             'sortable' => true,
             'closure'  => function ($row) {
-                return round($row->grand_total, 2);
+                return '<b style="color:limegreen">+ '. core()->formatBasePrice($row->grand_total, 2).'</b>';
+            },
+        ]);
+        $this->addColumn([
+            'index'    => 'date_transac',
+            'label'    => trans('admin::app.datagrid.date_transac'),
+            'type'     => 'string',
+            'sortable' => true,
+            'closure'  => function ($row) {
+                return core()->formatDate($row->date_transac);
             },
         ]);
     }

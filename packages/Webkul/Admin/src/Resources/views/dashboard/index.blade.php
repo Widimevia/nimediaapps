@@ -147,6 +147,20 @@
                             <span style="color:limegreen;">Total Kas dari Sales</span>
                         </div>
                     </div>
+                    <div id="expenses_value" v-else-if="cardType == 'expenses_value'" v-for="(data, index) in dataCollection.data">
+                
+                        <div class="column-container" style="z-index:10; position:relative;">
+                            <span style="color:tomato;">Rp.@{{ formatPrice(data.lost) }}</span>
+                            <div class="details">
+                                <span style="color:tomato;">Belum bayar</span>
+                            </div>
+                            <span style="color:tomato;">@{{ data.label }}</span>
+                            <p>Segera pulihkan kas anda</p>
+                            
+                        </div>
+                        <img class="gambar-dashboard" src="{{ asset('vendor/webkul/Admin/assets/images/inflasi-svg.svg') }}" alt="{{ config('app.name') }}"/>
+
+                    </div>
                     <div id="lost_value" v-else-if="cardType == 'lost_value'" v-for="(data, index) in dataCollection.data">
                        
                         <div class="column-container" style="z-index:10; position:relative;">

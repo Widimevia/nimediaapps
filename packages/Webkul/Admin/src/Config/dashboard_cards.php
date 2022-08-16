@@ -1,22 +1,20 @@
 <?php
 
 return [
-    [
-        "selected"      => true,
-        "card_id"       => "leads",
-        "sort"          => 1,
-        "card_type"     => "bar_chart",
-        // "view_url"      => "admin.leads.index",
-        "label"         => 'admin::app.dashboard.leads_over_time',
-        // "class_name"    => "Webkul\Admin\Helpers\DashboardHelper",
-        // "method_name"   => "getLeads",
-    ], 
+   
     [
         "selected"      => true,
         "card_id"       => "lead_value",
-        "sort"          => 2,
+        "sort"          => 1,
         "card_type"     => "lead_value",
         "label"         => 'admin::app.dashboard.leads_value',
+    ], 
+    [
+        "selected"      => true,
+        "card_id"       => "expenses_value",
+        "sort"          => 2,
+        "card_type"     => "expenses_value",
+        "label"         => 'admin::app.dashboard.expenses_value',
     ], 
     [
         "selected"      => true,
@@ -24,6 +22,16 @@ return [
         "sort"          => 3,
         "card_type"     => "lost_value",
         "label"         => 'admin::app.dashboard.lost_value',
+    ], 
+    [
+        "selected"      => true,
+        "card_id"       => "leads",
+        "sort"          => 4,
+        "card_type"     => "bar_chart",
+        // "view_url"      => "admin.leads.index",
+        "label"         => 'admin::app.dashboard.leads_over_time',
+        // "class_name"    => "Webkul\Admin\Helpers\DashboardHelper",
+        // "method_name"   => "getLeads",
     ], 
     [
         "selected"      => true,
