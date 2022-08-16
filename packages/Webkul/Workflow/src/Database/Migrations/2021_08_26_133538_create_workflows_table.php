@@ -20,8 +20,10 @@ class CreateWorkflowsTable extends Migration
             $table->string('entity_type');
             $table->string('event');
             $table->string('condition_type')->default('and');
-            $table->json('conditions')->nullable();
-            $table->json('actions')->nullable();
+            $table->text('conditions')->nullable();
+            $table->text('actions')->nullable();
+            // $table->json('conditions')->nullable();
+            // $table->json('actions')->nullable();
             $table->timestamps();
         });
     }
